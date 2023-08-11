@@ -2,21 +2,48 @@ package carreiras.com.github.helpdeskapi.domain;
 
 import carreiras.com.github.helpdeskapi.domain.enums.Priority;
 import carreiras.com.github.helpdeskapi.domain.enums.Status;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Objects;
 
-public class Ticket {
+@Entity
+public class Ticket implements Serializable {
 
+    private static final long serialVersionUID = 1L;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
+    @JsonFormat(pattern = "dd/MM/yyy")
     private LocalDate openingDate = LocalDate.now();
+
+    @JsonFormat(pattern = "dd/MM/yyy")
     private LocalDate closingDate;
     private Priority priority;
     private Status status;
     private String title;
     private String comment;
+
+    @ManyToOne
+    @JoinColumn(name = "technician_id")
     private Technician technician;
+
+    @ManyToOne
+    @JoinColumn(name = "customer_id")
     private Customer customer;
+
+    public Ticket() {
+        super();
+    }
 
     public Ticket(
         Integer id,
