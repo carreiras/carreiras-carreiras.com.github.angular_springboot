@@ -74,13 +74,9 @@ public abstract class Person {
 
     public Set<Profile> getProfiles() {
         return profiles.stream()
-            .map(x -> Profile.toEnum(x))
+            .map(Profile::toEnum)
             .collect(Collectors.toSet());
     }
-
-//    public void setProfiles(Set<Profile> profiles) {
-//        this.profiles = profiles;
-//    }
 
     public void addProfile(Profile profile) {
         this.profiles.add(profile.getCode());
