@@ -22,7 +22,7 @@ public enum Priority {
         return description;
     }
 
-    public static Priority tuEnum(Integer code) {
+    public static Priority toEnum(Integer code) {
         if (code == null)
             return null;
 

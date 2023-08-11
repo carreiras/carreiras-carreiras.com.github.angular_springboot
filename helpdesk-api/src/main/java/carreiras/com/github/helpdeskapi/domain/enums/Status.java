@@ -22,7 +22,7 @@ public enum Status {
         return description;
     }
 
-    public static Status tuEnum(Integer code) {
+    public static Status toEnum(Integer code) {
         if (code == null)
             return null;
 

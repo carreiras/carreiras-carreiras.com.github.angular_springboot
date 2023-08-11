@@ -22,7 +22,7 @@ public enum Profile {
         return description;
     }
 
-    public static Profile tuEnum(Integer code) {
+    public static Profile toEnum(Integer code) {
         if (code == null)
             return null;
 
